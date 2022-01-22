@@ -35,6 +35,22 @@ public:
 };
 class LuxuryCarFactory : public CarFactory
 {
+public:
+    LuxuryCarFactory() = default;
+protected:
+    Tyre* buildTyre()
+    {
+        return new LuxuryTyre();
+    }
+    Body* buildBody()
+    {
+        return new LuxuryBody();
+    }
+public:
+    Car* buildWholeCar()
+    {
+        return new Car(buildBody(), buildTyre());
+    }
 };
 
 #endif
